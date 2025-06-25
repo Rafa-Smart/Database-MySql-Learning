@@ -1,102 +1,50 @@
 
 
+-- jadi kita bisa pake fungisnya di where atau di select
+
+
+-- jadi ini untuk memanipulasi angka
+USE toko_online;
+DESCRIBE products;
+SHOW CREATE TABLE products;
+
+SELECT * FROM products;
+
+
+-- misal nih kita ingin menghtung operasi matematika
+-- ini misalnya adalah pangkat / pow
+
+-- jadi select itu untuk menampilkan
+SELECT pow(5,2); -- hasilnya adalah 25
+
+
+-- disini coba kita membuat kolom baru yg memperlihatkan price tapi dalam k atau ribu
+
+SELECT id, price, price DIV 1000 AS "price dlm k"
+FROM products ORDER BY price desc;
+
+
+-- kalo ini ga bisa karena kita mneggunakan "", nah itu tu ga bisa di gunakan dalam alias
+
+SELECT id, price, price DIV 1000 AS "price dlm k"
+FROM products ORDER BY "price dlm k" desc;
+
+
+-- jadi alias itu kalo lebih dari 1 kata, maka menggunakan backtik
+SELECT id, price, price DIV 1000 AS `price dlm k`
+FROM products ORDER BY `price dlm k` DESC;
+
+
+
+-- coba tes lagi
+
+SELECT sin(30);
+SELECT sqrt(13); -- 3.605551275463989
+SELECT round(sqrt(13),2); -- 3.61
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-WITH order_totals AS (
-  SELECT 
-    o.id AS order_id,
-    o.customer_id,
-    o.tanggal,
-    SUM(oi.harga * oi.jumlah) AS total_order
-  FROM 
-    orders o
-  JOIN 
-    order_items oi ON o.id = oi.order_id
-  WHERE 
-    YEAR(o.tanggal) = 2024
-  GROUP BY 
-    o.id, o.customer_id, o.tanggal
-),
-
--- CTE untuk agregasi per customer (jumlah order, total belanja, rata-rata, dll)
-customer_summary AS (
-  SELECT
-    c.id AS customer_id,
-    c.nama,
-    COUNT(ot.order_id) AS jumlah_order,
-    SUM(ot.total_order) AS total_belanja,
-    AVG(ot.total_order) AS rata_rata_belanja,
-    SUM(CASE WHEN ot.total_order > 2000000 THEN 1 ELSE 0 END) AS order_mahal,
-    
-    RANK() OVER (ORDER BY SUM(ot.total_order) DESC) AS peringkat,
-    
-    CASE 
-      WHEN SUM(ot.total_order) >= 10000000 THEN 'banyak'
-      WHEN SUM(ot.total_order) >= 5000000 THEN 'sedang'
-      ELSE 'Regular'
-    END AS loyalitas
-  FROM 
-    customers c
-  JOIN 
-    order_totals ot ON c.id = ot.customer_id
-  GROUP BY 
-    c.id, c.nama
-)
-
-USE sakila;
-SELECT * FROM address;
--- Final output dengan filter tambahan
-SELECT 
-  customer_id,
-  nama,
-  jumlah_order,
-  total_belanja,
-  rata_rata_belanja,
-  order_mahal,
-  loyalitas,
-  peringkat
-FROM 
-  customer_summary
-WHERE 
-  jumlah_order > 3 AND
-  total_belanja > 5000000
-ORDER BY 
-  total_belanja DESC
-LIMIT 10;
-
-
-
-
-
-
- * ================================================================
- *             MATERI: NUMERIC FUNCTIONS DI MYSQL
- * ================================================================
- *
- * 🔍 PENGERTIAN:
  * ---------------------------------------------------------------
  * Numeric Function (fungsi numerik) di MySQL adalah fungsi bawaan
  * yang digunakan untuk melakukan operasi perhitungan atau manipulasi angka.
