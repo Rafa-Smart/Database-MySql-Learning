@@ -16,7 +16,8 @@ Gambar berikut menampilkan **antarmuka utama DBeaver** saat pertama kali dijalan
 
 ## 🛠️ Contoh Penggunaan DBeaver
 
-Pada gambar berikut, terlihat contoh bagaimana kita dapat **menulis dan menjalankan perintah SQL langsung di editor DBeaver**, serta melihat hasilnya di bagian bawah.
+Pada gambar berikut, terlihat contoh bagaimana kita dapat **menampilkan hasil relasi antar table yang berbentuk diagram**
+agar lebih mudah untuk mengelolanya
 
 <p align="center">
   <img src="images/gambar-dbeaver-1.png" alt="Contoh Penggunaan DBeaver" width="600"/>
