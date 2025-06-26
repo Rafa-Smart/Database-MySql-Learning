@@ -41,8 +41,7 @@ ORDER BY category asc, id desc;
 --https://chatgpt.com/c/685b94dd-fa34-8009-92d5-cecd5feefbdc
 
 
- *
- * Pengertian:
+
  * -----------
  * ORDER BY adalah klausa di MySQL yang digunakan untuk mengurutkan hasil query
  * berdasarkan satu atau lebih kolom, baik secara ASCENDING (naik) maupun DESCENDING (turun).

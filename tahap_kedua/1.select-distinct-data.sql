@@ -1,6 +1,27 @@
 -- --SELECT DISTINCT DATA = pilih data yang berbeda, jadi cari data yg ga duplikat
 
+-- tapi kao misalkan ita masukan select distinct kota, status
+-- maka yg ditampilkan adalah kombinasi yg diantara keduanya yg berbeda
 
+ * INSERT INTO pelanggan (nama, kota, status) VALUES
+ * ('Rafa', 'Bandung', 'aktif'),
+ * ('Dina', 'Jakarta', 'aktif'),
+ * ('Sari', 'Bandung', 'tidak aktif'),
+ * ('Budi', 'Jakarta', 'aktif'),
+ * ('Rafa', 'Bandung', 'aktif');
+ *
+ * ==============================================================
+ *         10. HASIL SELECT DISTINCT kota, status
+ * ==============================================================
+ * +----------+---------------+
+ * | kota     | status        |
+ * +----------+---------------+
+ * | Bandung  | aktif         |
+ * | Jakarta  | aktif         |
+ * | Bandung  | tidak aktif   |
+ * +----------+---------------+
+ *
+ * ✅ Meskipun 'Bandung' muncul 3x, hanya kombinasi unik dari 2 kolom yang ditampilkan.
 
 USE toko_online;
 DESCRIBE products;

@@ -222,12 +222,6 @@ import mysql from "mysql2/promise";
  *
  * 📌 Hindari over-use tanpa alasan logis, karena fungsi matematis
  *     bisa memperlambat performa jika tabel sangat besar.
- *
- * ================================================================
- *            SELESAI — SEMOGA SANGAT JELAS & LENGKAP!
- * ================================================================
- */
-
 
 
 
