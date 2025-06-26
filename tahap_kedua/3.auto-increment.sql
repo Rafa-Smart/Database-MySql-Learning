@@ -63,6 +63,10 @@ truncate admin;
 INSERT INTO admin(first_name, last_name)
 values("budi", "handoko");
 
+-- dan fungis ini akna mengece table yg terakhir kali kita akses
+
+-- tapi kalo sebelumnya kita belum pake tabelnya, maka nanti akan 0 haislya, jadi pake dulu tabelnya baru pake fungsinya
+
 SELECT LAST_INSERT_ID();
 
 
