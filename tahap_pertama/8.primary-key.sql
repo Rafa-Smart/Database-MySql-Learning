@@ -1,6 +1,6 @@
 -- karena kita sudah membuat tabelny dan trnyata kita lupa untuk menmabuhka fitur primary key
 -- maka kita bisa, karena pas juga kita punya kolom id, yg sebenarnya dia sudah uniq
-
+https://chatgpt.com/c/6863a1d6-20d8-8009-a2cc-fef88e4bb25d
 -- jadi kita bisa menunjuk 1 kolom yg mau kita jadikan sebagai primary key
 -- danprimary key ini juga bisa lebih dari 1 di setiap tabel, tapi idealnya itu 1 primary key 1 table
 
@@ -13,9 +13,97 @@ DESCRIBE products;
 -- jadi sebenarynya kita itu ketika masukin primary keynya harusnya itu ketika membuat tabelnya
 -- api karena lupa kita bisa menggunakan alter table
 
-ALTER TABLE products ADD PRIMARY KEY (id);
+ALTER TABLE products ADD PRIMARY KEY (id)
 
 SELECT * from products;
+
+
+
+🔑 1. PRIMARY KEY
+------------------
+
+✅ Pengertian:
+PRIMARY KEY adalah kolom (atau kombinasi beberapa kolom) yang digunakan untuk 
+mengidentifikasi setiap baris secara **unik** dalam sebuah tabel.
+
+👉 Hanya **satu PRIMARY KEY** yang diperbolehkan dalam satu tabel.
+
+✅ Ciri-ciri PRIMARY KEY:
+| Fitur                 | Penjelasan                                                                 |
+|-----------------------|----------------------------------------------------------------------------|
+| Unik                  | Nilai tidak boleh duplikat                                                |
+| Tidak Boleh NULL      | Wajib memiliki nilai (NOT NULL)                                           |
+| Hanya Satu per Tabel  | Tidak bisa memiliki lebih dari satu PRIMARY KEY                           |
+| Index Otomatis        | Secara otomatis membuat index clustered (utama)                           |
+| Digunakan untuk relasi| Sering dipakai sebagai acuan FOREIGN KEY di tabel lain                    |
+
+✅ Contoh Penggunaan:
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    username VARCHAR(100),
+    email VARCHAR(100)
+);
+
+
+🔐 2. UNIQUE
+-------------
+
+✅ Pengertian:
+UNIQUE digunakan untuk memastikan bahwa nilai dalam kolom (atau kombinasi kolom)
+tetap unik, **namun bukan sebagai kunci utama (primary)**.
+
+👉 Satu tabel bisa memiliki **lebih dari satu UNIQUE constraint.**
+
+✅ Ciri-ciri UNIQUE:
+| Fitur                 | Penjelasan                                                                 |
+|-----------------------|----------------------------------------------------------------------------|
+| Unik                  | Nilai tidak boleh duplikat                                                |
+| Boleh NULL            | Nilai boleh NULL (bahkan bisa beberapa NULL tergantung versi MySQL)       |
+| Bisa Lebih dari Satu  | Bisa menambahkan beberapa UNIQUE constraint di satu tabel                 |
+| Validasi Data         | Sering dipakai untuk menjaga agar data penting tidak ganda (email, NIK, dsb)|
+
+✅ Contoh Penggunaan:
+CREATE TABLE users (
+    id INT PRIMARY KEY,
+    username VARCHAR(100) UNIQUE,
+    email VARCHAR(100) UNIQUE
+);
+
+
+📌 Perbandingan PRIMARY KEY vs UNIQUE:
+
+| Aspek                  | PRIMARY KEY                          | UNIQUE                                 |
+|------------------------|---------------------------------------|----------------------------------------|
+| Tujuan                 | Identifikasi unik baris               | Validasi nilai unik                    |
+| Jumlah per tabel       | Hanya satu                            | Bisa lebih dari satu                   |
+| NULL                   | Tidak boleh NULL                      | Boleh NULL (tergantung versi)          |
+| Index Otomatis         | Ya (clustered index)                  | Ya (non-clustered index)               |
+| Relasi antar tabel     | Ya, digunakan dalam FOREIGN KEY       | Jarang digunakan untuk relasi tabel    |
+
+🛠️ Studi Kasus Nyata:
+- `id` → PRIMARY KEY (karena digunakan untuk identifikasi unik baris)
+- `email`, `username` → UNIQUE (karena tidak boleh ganda meskipun bukan kunci utama)
+
+Contoh kombinasi:
+CREATE TABLE accounts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE,
+    username VARCHAR(100) UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+
+💡 Composite Unique:
+Digunakan saat dua kolom atau lebih harus unik **dalam kombinasi**, misalnya:
+
+CREATE TABLE orders (
+    user_id INT,
+    product_id INT,
+    quantity INT,
+    UNIQUE (user_id, product_id)
+);
+
+👉 Artinya: Satu user hanya boleh memesan produk yang sama **satu kali**.
 
 
 

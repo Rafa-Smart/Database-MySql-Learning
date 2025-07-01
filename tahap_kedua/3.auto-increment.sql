@@ -53,6 +53,12 @@ truncate admin;
 
 -- PNETING
 
+-- jadi fungsi dari si auto increment ini adlah, jadi ketika kita sudah membuat kode queynya
+-- maka nanti akna digenerate dulu si auto incrementnya, dan baru ditampilkan si daanya
+
+-- jadi ketika kita pertama buat masukan datanya dulu, nah otomatiskan bakal ada data uniq yg auto increment
+-- nah daa itu ketika kita delete, maka akn hilang datnya
+
 -- dan kalo misalkan kita delete data terakhir yaitu yg idnya 5, nah berati kan jadi 1,2,3,4
 -- nah ketika kita insert lagi datanya, maka data tersebut akan langsung masuk menjadi data ke 6 bukan ke 5
 -- jadi akan nambah lagi data idnya dari yg terakhir kai di generete, dan ga peduli apakah data terakhirnya itu masih ada atau engga

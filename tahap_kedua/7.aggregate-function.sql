@@ -27,6 +27,26 @@ SELECT max(price) AS termahal FROM products; -- 25.000 -- satu data saja
 SELECT * FROM products
 ORDER BY price DESC LIMIT 0,1; -- nah ini akna menampilkan data terbesarnya secara keseluruhan kolom
 
+-- atau bisa juga seprti ini
+USE toko_online;
+
+
+SELECT * FROM products
+where max(price);
+
+-- tapi ga bisa krena
+-- Fungsi Agregat (MAX, SUM, AVG, dll) Tidak Bisa Langsung Digunakan di WHERE
+-- Fungsi seperti MAX(price) adalah fungsi agregasi yang menghitung nilai maksimum dari semua baris.
+-- Namun, WHERE hanya bisa dipakai untuk memfilter baris satu per satu, bukan berdasarkan hasil agregasi.
+
+-- tapi karena si fugnsi agregate ini bisa digunkan di SELECT, mak a kita bisa menggunakannya
+
+SELECT * FROM products
+WHERE price = (SELECT max(price) FROM products);
+
+SELECT * FROM products
+where id = "p0001";
+
 
 -- oke disini kita akn cari rata rata dari penggabungan seleuruh data yg ada di price
 -- jadi cara kerjanya itu dimbil dulu seluruh datanya atau digabungkan, lalu di logickan

@@ -41,6 +41,12 @@ use toko_online;
 -- jadi kita akn hitung agregate menggunakan sum, jadi mengihtung total pembelian BERDASARKAN kolom category
 -- nah jadi kita punya data 3 data uniq nih, maka nanti agreagatenya akan di hiitung sebanyak 3 kali
 
+USE toko_online;
+
+SELECT category, sum(price * quantity) AS `harga total` FROM products
+GROUP BY category
+ORDER BY `harga total` desc;
+
 -- contoh dah
 
 -- PENTING
@@ -53,6 +59,18 @@ GROUP BY category;
 goreng  13010000
 kuah    4735000
 lain lain   16965000
+
+
+-- disini kita mencoba beberapa fungi agregate dengna kombinasi kolom lain
+-- menggunakan group by
+
+USE toko_online;
+
+-- 1.mencari nilai price terbesar disetiap category
+SELECT category,  max(price) AS harga_max FROM products GROUP BY category;
+
+-- 2. mencari nilai terkecil price berdsarkan category
+SELECT category, min(price) AS harga_min FROM products GROUP BY category;
 
 
  * GROUP BY digunakan untuk mengelompokkan baris berdasarkan satu atau

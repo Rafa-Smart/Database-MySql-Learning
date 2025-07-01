@@ -34,7 +34,11 @@ ORDER BY category asc, id desc;
 
 
 
+USE toko_online;
+SELECT * FROM products;
 
+SELECT * FROM products
+ORDER BY category ASC, id desc;
 
 
 

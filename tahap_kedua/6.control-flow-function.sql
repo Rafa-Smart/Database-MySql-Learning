@@ -87,10 +87,42 @@ SELECT id, nama, price,
 
 
 
+-- disini kita coba ulangi lagi
+
+USE toko_online;
+
+SELECT * FROM products;
+
+ALTER TABLE products
+DROP COLUMN indikasi;
+
+ALTER TABLE products
+ADD COLUMN indikasi varchar(100) NOT NULL AFTER nama;
+
+
+UPDATE products
+SET indikasi = CASE 
+    WHEN price < 15000 THEN "murah"
+    WHEN price BETWEEN 15000 AND 20000 THEN "sedang"
+    WHEN price > 20000 THEN "mahal"
+END;
+
+SELECT id, nama, price, CASE 
+    WHEN price < 15000 THEN "murah"
+    WHEN price BETWEEN 15000 AND 20000 THEN "sedang"
+    WHEN price > 20000 THEN "mahal"
+END AS `indikasi` FROM products;
 
 
 
+-- sekarang coba yg if else
 
+UPDATE products
+SET indikasi = if(price < 15000, "murah", IF(price BETWEEN 15000 AND 20000, "sedang", "mahal"));
+
+
+SELECT id, nama, price, if(price < 15000, "murah", IF(price BETWEEN 15000 AND 20000, "sedang", "mahal"))
+AS `indikasi` FROM products;
 
  * Fungsi pengendali alur ini sangat berguna untuk logika kondisional
  * dalam SELECT, INSERT, UPDATE, atau query analitik kompleks.

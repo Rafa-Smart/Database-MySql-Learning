@@ -37,7 +37,9 @@ WHERE nama like 'm%';
 -- jadi cari data yg awalnya itu adalah huruf m
 
 
+USE toko_online;
 
+SELECT * FROM products;
 
 
 

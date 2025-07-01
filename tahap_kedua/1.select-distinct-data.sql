@@ -42,13 +42,20 @@ SELECT DISTINCT category, id FROM products; -- sama aja
 -- pastikan dulu bahwa data tersebut benar benar banyak duplikatnya
 
 
+USE toko_online;
 
+SELECT * FROM products;
+
+SELECT DISTINCT category, price FROM products;
+
+
+select DISTINCT price, quantity, category FROM products;
 
  * ==============================================================
  *             4. DISTINCT PADA MULTI KOLOM
  * ==============================================================
  * Contoh:
- *     SELECT DISTINCT kota, nama FROM pelanggan;
+ *     SELECT DISTINCT kota, nama,  FROM pelanggan;
  *
  * ➤ Artinya:
  * - Hanya tampilkan baris dengan kombinasi kota-nama yang unik.
