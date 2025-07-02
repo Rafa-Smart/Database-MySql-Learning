@@ -53,7 +53,7 @@ SELECT *, match(judul, isi)
 
 
 SHOW INDEX FROM artikel;
-
+USE toko_online;
 SELECT *, MATCH(judul, isi) AGAINST('programming dan database' IN NATURAL LANGUAGE MODE) AS skor
 FROM artikel
 ORDER BY skor DESC;

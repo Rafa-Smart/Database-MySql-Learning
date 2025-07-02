@@ -90,7 +90,7 @@ CREATE TABLE customer (
     lastname varchar(100) NOT NULL,
     UNIQUE KEY (email)
     -- nah kalo kita ga pake nama constraintnya atau penjaganya
-    -- maka artinya secara default sudah diberi nama tai terserah si mysqlnya
+    -- maka artinya secara default sudah diberi nama tapi terserah si mysqlnya
     
 ) ENGINE = innodb;
 

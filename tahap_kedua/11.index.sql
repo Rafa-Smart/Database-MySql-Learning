@@ -125,6 +125,11 @@ CREATE TABLE baru2 (
     INDEX (nama3)
 ) ENGINE = innodb;
 
+USE toko_online;
+SHOW indexes FROM products;
+EXPLAIN SELECT * FROM products;
+
+
 composite
 CREATE TABLE baru2 (
     id int PRIMARY KEY AUTO_INCREMENT,

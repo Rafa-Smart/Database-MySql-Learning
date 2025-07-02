@@ -32,7 +32,11 @@ USE toko_online;
 
 
 SELECT * FROM products
-where max(price);
+WHERE max(price);
+
+SELECT * FROM products
+ORDER BY price DESC 
+LIMIT 0,1;
 
 -- tapi ga bisa krena
 -- Fungsi Agregat (MAX, SUM, AVG, dll) Tidak Bisa Langsung Digunakan di WHERE

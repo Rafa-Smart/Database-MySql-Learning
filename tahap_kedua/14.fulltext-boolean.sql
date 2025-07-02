@@ -24,7 +24,8 @@ WHERE match(judul, isi)
 -- Cari kata yang dimulai dengan "data"
 SELECT * FROM artikel
 WHERE MATCH(judul, isi)
-AGAINST('data*' IN BOOLEAN MODE);
+AGAINST('data*' IN BOOLEAN MODE)
+ORDER BY id desc;
 
 
 

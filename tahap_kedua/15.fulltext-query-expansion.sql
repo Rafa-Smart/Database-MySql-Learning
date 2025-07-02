@@ -8,9 +8,26 @@ https://dev.mysql.com/doc/refman/8.4/en/fulltext-query-expansion.html
 -- akan dicari data yg sering muncul pada pencarian dat pertama
 -- dan yg dicariya tu otomatis oleh si innodbnya
 
+SELECT * FROM artikel
+WHERE MATCH(judul, isi)
+AGAINST('programming' WITH QUERY EXPANSION);
+
+SELECT * FROM artikel
+WHERE match(judul, isi)
+against('programming' IN NATURAL LANGUAGE mode);
 
 
- *
+select * FROM artikel
+WHERE match(judul, isi)
+against('+programming' IN boolean mode); 
+
+
+SELECT * FROM artikel
+WHERE judul LIKE '%programming%' OR isi LIKE '%programming%'; 
+
+
+
+*
  * 🔍 APA ITU FULL-TEXT SEARCH DENGAN QUERY EXPANSION MODE?
  * ----------------------------------------------------------------------------
  * Mode pencarian full-text di MySQL yang mencoba memberikan hasil **lebih relevan**
@@ -51,8 +68,8 @@ https://dev.mysql.com/doc/refman/8.4/en/fulltext-query-expansion.html
  * ----------------------------------------------------------------------------
  *
  * // Buat index
- * ALTER TABLE artikel ADD FULLTEXT(judul, isi);
- *
+ * ALTER TABLE artikel ADD FULLTEXT(judul, isi);use toko_online;
+
  * // Query dengan query expansion
  * SELECT * FROM artikel
  * WHERE MATCH(judul, isi)

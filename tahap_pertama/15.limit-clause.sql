@@ -43,6 +43,15 @@ SELECT * FROM products WHERE price > 15000 ORDER BY price desc LIMIT 10,5; -- pa
 SELECT * FROM products WHERE price > 15000 ORDER BY price desc LIMIT 15,5; -- page keempat
 
 
+-- urutannya
+| No | Klausa SQL            | Penjelasan                                                                                     |
+| -- | --------------------- | ---------------------------------------------------------------------------------------------- |
+| 1  | `FROM products`       | ✅ **Langkah pertama**: SQL akan menentukan sumber data (tabel `products`).                     |
+| 2  | `WHERE price > 15000` | ✅ **Langkah kedua**: Menyaring data yang hanya memenuhi kondisi `price > 15000`.               |
+| 3  | `ORDER BY price DESC` | ✅ **Langkah ketiga**: Mengurutkan hasil saringan tadi berdasarkan `price` dari besar ke kecil. |
+| 4  | `LIMIT 0, 5`          | ✅ **Langkah keempat**: Mengambil 5 baris pertama dari hasil yang telah diurutkan.              |
+| 5  | `SELECT *`            | ✅ **Langkah terakhir**: Memilih dan menampilkan semua kolom (`*`) dari hasil akhir.            |
+
 
 
 

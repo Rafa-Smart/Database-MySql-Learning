@@ -1,6 +1,7 @@
 --
 
-
+-- jadi fungsi foreign key ini adalah untuk memastika data yg ada pada tabel referensi sama dengan tabel yg mengambil data di tabel referensi
+-- jadi harus sama antara tabel di referens dan tabel yg mereferensikan
 
 -- kita bisa melakukan relasi antar table
 -- misla pada tabel penjualan, nah pasti didalam data penjualan ini terdapat data barangnya
@@ -148,6 +149,11 @@ WHERE id = 'p0001';
  * | RESTRICT      | Seperti NO ACTION, tapi diperiksa lebih ketat (default)                      |
  * | SET DEFAULT   | Atur ke nilai default (jarang dipakai)    
  
+ ALTER TABLE wishlist DROP FOREIGN KEY fk_products_id;
+
+ 
+ ALTER TABLE wishlist
+ DROP CONSTRAINT fk_products_id;
  
  ALTER TABLE wishlist
  add CONSTRAINT fk_products_id
@@ -159,14 +165,59 @@ WHERE id = 'p0001';
 SELECT * FROM wishlist;
  -- nah disini sudah kita setting bahwa etika di tabel referencenya diubah, maka dat ayg ada di 
  -- tabel yg referens ke tabel refeences akan ikut berubha juga
+USE toko_online;
+ -- disini coba kita masukan data id yg tidak ada di tabel products, tetep ga bisa
+-- karena cascade ini hanya berfungsi jika yg diubah ubah itu dari si abel referensinya
 
- -- disini coba kita masukan data id yg tidak ada di tabel products
- INSERT INTO products (id, name, category, price, quantity)
+ INSERT INTO wishlist (id_products, description)
  VALUES ('pxxxx', 'minuman kesukaan');
 
  DELETE FROM products
 WHERE id = 'p0001';
  
+-- disini coba kita tambahkan lagi data baru ke tabel products
+-- lalu di tabel wishslist kita tambahkan data produk yg baru itu
+-- lalu kita akn update dulu(buat ngecek fitur on upadate cascade)
+-- lalu kita delete 
+-- dan apakah ikut berubah yg tabel yg mereferenskannya (wishlist)
+SHOW CREATE TABLE wishlist;
+
+DESCRIBE wishlist;
+SELECT * FROM products;
+SELECT * FROM wishlist;
+
+INSERT INTO products (id,nama,indikasi,category,description,price,quantity)
+VALUES ('xxx2','ayam bakar2','murah','goreng','ayam bakar bu marni2',14000,15);
+
+-- masukan data products ke table wishlist
+
+INSERT INTO wishlist (id_products, description)
+VALUES ('p0005','ayam isi sapi');
+
+INSERT INTO wishlist (id_products, description)
+VALUES ('xxx2','ayam bakar enak2');
+
+
+-- sekarang update data xxx dari tbel products
+-- ini ga keganti, karena bukan kolom primary keynya yg diganti
+-- jadi kalo kita ganti id(primary key) nya, maka di tabel 
+-- anak juga akn ke ganti
+
+UPDATE products 
+SET price = 50000 
+WHERE id = 1;
+
+
+-- makanya kita hanya bsia ganti primari key nya saja
+UPDATE products
+SET id = 'p0055'
+WHERE id = 'xxx2';
+
+
+-- otomatis ke hapus juga yg di wishlist
+DELETE from products
+WHERE id = 'xxx';
+
 
  *
  * 🔑 APA ITU FOREIGN KEY?
@@ -187,7 +238,16 @@ WHERE id = 'p0001';
  * ✅ Otomatis menghapus / mengubah data terkait (ON DELETE / ON UPDATE)
  * ✅ Memodelkan hubungan antar tabel (1-to-1, 1-to-many)
  *
- *
+ 
+ 
+ 
+ 
+ SELECT CONSTRAINT_NAME
+FROM information_schema.KEY_COLUMN_USAGE
+WHERE TABLE_NAME = 'wishlist'
+  AND TABLE_SCHEMA = 'toko_online'
+  AND REFERENCED_TABLE_NAME IS NOT NULL;
+
  * 🔧 SINTAKS DASAR:
  * ----------------------------------------------------------------------------
  * CREATE TABLE child_table (

@@ -9,6 +9,10 @@ HAVING: filter setelah agregasi.
 WHERE: filter sebelum agregasi.
 */
 
+USE toko_online;
+
+
+
 -- jadi ketika kita ingin menampilkan data yg sudah di agregate, jadi akan menhasilkan 1 data saja
 -- oleh kaena itu kita ga bisa kombinasikan data agregate dengan data lain
 -- karena data lainnya itu banyak, sedangkan data agregatenya itu sedikit
@@ -22,6 +26,8 @@ WHERE: filter sebelum agregasi.
 --maka kita bisa pake GROUP BY
 
 SELECT category, count(category) AS banyak_data FROM products GROUP BY category ;
+
+SELECT category, count(DISTINCT category) AS banyak_data FROM products GROUP BY category ;
 
 -- PENTING,
 -- jadi gini analogi sederhananya
