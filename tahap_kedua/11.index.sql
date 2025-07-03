@@ -15,6 +15,7 @@ jadi inituh perkolom indexnya, jadi bukan 1 table
 -- dan juga mengoptimasi select dan juga order by
 -- Mempercepat pencarian dan filter (WHERE, JOIN, ORDER BY, dsb)
 
+
 -- jadi satu table itu bisa olomnya bisa ditambhakn index lebih dari satu
 
 

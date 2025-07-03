@@ -160,6 +160,7 @@ Mengambil 3 departemen dengan pengeluaran gaji tertinggi.
 -- GROUP BY department_id, job_title
 
 
+
 Kelompokkan data kombinasi departemen & jabatan.
 */
 

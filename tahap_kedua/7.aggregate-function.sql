@@ -47,6 +47,9 @@ LIMIT 0,1;
 
 SELECT * FROM products
 WHERE price = (SELECT max(price) FROM products);
+-- disini harus pake agreagete kalo jika ingin menggunakanya pada where
+-- karena wwhere ini kan mengecek
+
 
 SELECT * FROM products
 where id = "p0001";
