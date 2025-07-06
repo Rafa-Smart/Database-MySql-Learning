@@ -104,6 +104,7 @@ ALTER TABLE baru
 ADD INDEX (nama3);
 
 
+
 | Kolom | Tipe         | Null | Key | Keterangan      |
 | ----- | ------------ | ---- | --- | --------------- |
 | id    | INT          | NO   | PRI | AUTO\_INCREMENT |

@@ -4,7 +4,7 @@
 
 
 
---jadi many TO many ini adlah relasi
+-- jadi many TO many ini adlah relasi
 -- yang dimana ada 2 tabel dan tabel pertma bisa puna banyak relasi ke tabel kedua dan sebaliknya
 -- contoh relasi many to many
 -- relasi antara produk dan penjualan, dimaa setiap produk bisa dijual berklai kali, da setiap penjualan 

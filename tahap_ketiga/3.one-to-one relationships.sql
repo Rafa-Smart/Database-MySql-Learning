@@ -1,5 +1,8 @@
 
 
+-- kit juga bisa menambahkan tabel di tenahnya
+-- dan nanti kita set id product dan id user menjadi uniq
+-- jadi add constraint uniq_key unique key(id_products, id_user)
 
 
 -- jadi maksudnya adlah tiap baris pada sebuah tabel utama hanya bleh unya relasi 1 baris daja juga

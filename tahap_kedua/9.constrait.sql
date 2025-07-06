@@ -249,6 +249,8 @@ CREATE TABLE accounts (
 💡 Composite Unique:
 Digunakan saat dua kolom atau lebih harus unik **dalam kombinasi**, misalnya:
 
+
+-- jadi dengan ini kita bisa set bahwa, kita bisa one to one tapi menggunakn tabel baru di tengahnya
 CREATE TABLE orders (
     user_id INT,
     product_id INT,

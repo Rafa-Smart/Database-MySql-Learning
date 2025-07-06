@@ -70,7 +70,7 @@ SELECT * FROM guestbook;
 ROLLBACK;
 
 -- perintah perintah yang tidak bisa pake transaksi
--- jadi yang dml -> mengubah struktur table
+-- jadi yang ddl -> mengubah struktur table
  * ➤ Perintah seperti:
  *    - CREATE TABLE
  *    - DROP TABLE
