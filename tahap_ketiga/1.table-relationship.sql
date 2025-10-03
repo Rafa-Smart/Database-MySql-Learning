@@ -152,6 +152,18 @@ WHERE id = 'p0001';
  ALTER TABLE wishlist DROP FOREIGN KEY fk_products_id;
 
  
+ use toko_online;
+ 
+ SHOW tables;
+ 
+ SELECT * FROM customer;
+ 
+ SELECT * FROM products;
+ 
+ SELECT * FROM category;
+ 
+ SELECT c.*, p.* FROM products AS p JOIN category AS c ON (c.id = p.id_category);
+ 
  ALTER TABLE wishlist
  DROP CONSTRAINT fk_products_id;
  
